@@ -11,6 +11,10 @@ public class MainVerticle extends AbstractVerticle {
     public void start() {
         HttpServer server = vertx.createHttpServer();
         server.requestHandler(request -> {
+            if (request.path().endsWith("echo/error")) {
+                throw new RuntimeException("user-triggered exception");
+            }
+
             final long start = System.nanoTime();
             final Buffer responseContent = Buffer.buffer();
 
