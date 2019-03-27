@@ -20,7 +20,8 @@ public class MainVerticle extends AbstractVerticle {
                     .appendString(System.lineSeparator());
             responseContent.appendString(request.method().toString())
                     .appendString(" ")
-                    .appendString(request.uri());
+                    .appendString(request.uri())
+                    .appendString(System.lineSeparator());
 
             request.headers().forEach(
                     entry -> responseContent.appendString(entry.getKey())
